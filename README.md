@@ -1,96 +1,218 @@
-# Clawederous
+# Clawderous
 
-> Email as the universal interface for personal automation.
+**📧 Email-to-anything for OpenClaw. Claude on Claw, via Email.**
 
-<div align="center">
+[![ClawHub](https://img.shields.io/badge/ClawHub-v0.1.0-blue)](https://clawhub.com)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-Ready-green)](https://openclaw.ai)
 
-**A homage to Posterous (2008)** — the startup that let you blog via email, now reimagined for the agent era.
+> "Posterous let you blog by emailing. Clawderous lets you do *anything* by emailing your agent."
 
-[Get Started](/docs/getting-started.md) · [Workflows](/docs/workflows.md) · [CLI](/docs/cli.md)
+---
 
-</div>
+## Quick Start
 
-## What is Clawederous?
+```bash
+# Install
+clawhub install clawderous
 
-Clawederous is a personal automation layer that treats email as a command bus. Send an email, get things done. No apps, no logins, no friction.
-
-```
-To: you@agentmail.to
-Subject: /tweet Hello from Clawederous! 🦞
-
-→ Tweet posted. Confirmation reply sent.
-```
-
-## Why Email?
-
-- **Universal** — Everyone has email. No new accounts, no lock-in.
-- **Ubiquitous** — Works on any device, any email client.
-- **Agent-ready** — Perfect interface for AI to parse and act on.
-- **No lock-in** — Your data, your inbox, your rules.
-
-## Quick Example
-
-```
-To: you@agentmail.to
-Subject: /note Meeting with Sarah
-
-Body:
-Action: follow up on pricing
-@claris send: meeting notes attached
+# Email your claw
+To: clawederous@agentmail.to
+Subject: /memo Hello World
+Body: This is my first Clawderous memo!
 ```
 
-Result: Note saved to knowledge base, task sent to Claris.
+Response:
+```
+✅ Memo saved!
+📝 Hello World
+🔗 https://tawkie.dev/memo/abc123
+```
 
-## Supported Commands
+---
 
-| Command | Action |
-|---------|--------|
-| `/tweet` | Post to X/Twitter |
-| `/note` | Save to personal knowledge base |
-| `/claris` | Forward to designated recipient |
-| `/log` | Append to daily journal |
-| `/remind` | Create a reminder |
-| `/summarize` | AI summary of email thread |
+## Commands
+
+| Command | Description | Example |
+|---------|-------------|---------|
+| `/memo` | Quick note | `/memo Shopping list` |
+| `/blog` | Blog post | `/blog My Thoughts` |
+| `/run` | Execute workflow | `/run backup` |
+| `/reply` | Send reply | `/reply person@email.com` |
+| `/status` | View stats | `/status` |
+| `/help` | Get help | `/help` |
+
+---
+
+## Setup
+
+### Prerequisites
+
+- OpenClaw installed
+- Convex account (for memo storage)
+- AgentMail account at [agentmail.to](https://agentmail.to)
+
+### Get an AgentMail Inbox
+
+```bash
+# 1. Go to console.agentmail.to
+# 2. Create an account
+# 3. Get your API key
+# 4. Create an inbox (e.g., "claw")
+```
+
+### Installation
+
+```bash
+clawhub install clawderous
+```
+
+### Configuration
+
+**Environment variable:**
+```bash
+export AGENTMAIL_API_KEY=your_api_key_here
+```
+
+**Or in code:**
+```typescript
+import { clawderous } from "clawderous";
+
+await clawderous.configure("your_api_key");
+const email = await clawderous.getInbox();
+// Now you have: clawederous@agentmail.to
+```
+
+**Start polling:**
+```typescript
+await clawderous.start();
+// Your claw is now listening for emails!
+```
+
+---
 
 ## Architecture
 
 ```
-Email → IMAP → Parser → Agent → Action → Confirmation
-                    ↓
-              Knowledge Base / APIs
+User Email ──▶ Clawderous Engine ──▶ Output
+                 │
+     ┌──────────┼──────────┐
+     ▼          ▼          ▼
+   /memo      /blog      /run
+     │          │          │
+     ▼          ▼          ▼
+  Convex     Blog      Workflows
 ```
-
-## Getting Started
-
-1. Set up AgentMail inbox (or any IMAP provider)
-2. Configure credentials in `.env`
-3. Start the agent: `npm run dev`
-4. Send your first command
-
-```bash
-git clone https://github.com/tawkie/clawederous
-cd clawederous
-npm install
-cp .env.example .env
-# Edit .env with your credentials
-npm run dev
-```
-
-## Tech Stack
-
-- **Inbox**: AgentMail (default) or any IMAP
-- **Agent**: OpenClaw / Claude
-- **Actions**: Twitter API, local filesystem, webhooks, Signal/Telegram
-
-## Philosophy
-
-> Email is the OS. Your inbox is your terminal.
-
-Clawederous believes in:
-- **Shorthand power** — Short syntax → structured actions
-- **Beautiful defaults** — AgentMail as the default provider
-- **Personal automation** — Build workflows that fit your life
 
 ---
 
-Built with 🦞 by Tawkie
+## BYO (Bring Your Own)
+
+Clawderous is designed around BYO infrastructure:
+
+| Component | Options |
+|-----------|---------|
+| Email | AgentMail, Gmail, Proton, custom IMAP |
+| Intelligence | Claude (via OpenClaw), your model |
+| Storage | Convex, R2, GitHub Gist |
+| Workflows | Your OpenClaw workflows |
+
+---
+
+## Why Clawderous?
+
+1. **Universal** - Everyone has email
+2. **Familiar** - No new tools to learn
+3. **Asynchronous** - Works offline, anytime
+4. **Powerful** - Claude intelligence on the backend
+5. **Portable** - BYO infrastructure, no lock-in
+
+---
+
+## Motivation
+
+In 2008, Posterous launched with a simple promise: "Blog by email."
+
+It was brilliant. No CMS, no login, no friction. Just send an email and your thoughts are published.
+
+**Clawderous** brings that philosophy to the agent era. Email your agent, and:
+
+- Your thoughts are captured as memos
+- Your ideas become blog posts
+- Your commands trigger workflows
+- Your agent becomes accessible anywhere
+
+The interface is email. The intelligence is Claude. The infrastructure is OpenClaw.
+
+---
+
+## Project Structure
+
+```
+clawderous/
+├── SKILL.md           # ClawHub skill documentation
+├── README.md          # This file
+├── package.json       # Dependencies
+├── tsconfig.json      # TypeScript config
+├── src/
+│   ├── index.ts       # Main entry point
+│   ├── ingest/        # Email ingestion
+│   │   └── email.ts   # Raw email parsing
+│   ├── parse/         # Command parsing
+│   │   └── command.ts # Command parser + schemas
+│   └── handlers/      # Command handlers
+│       └── commands.ts # Execute /memo, /blog, etc.
+└── convex/
+    └── schema.ts      # Convex database schema
+```
+
+---
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Build
+npm run build
+
+# Run tests
+npm test
+
+# Deploy to Convex
+npm run convex:deploy
+```
+
+---
+
+## Roadmap
+
+- [ ] v0.1: Basic /memo and Convex storage
+- [ ] v0.2: /blog with markdown formatting
+- [ ] v0.3: /run workflow triggers
+- [ ] v0.4: IMAP polling for custom email
+- [ ] v0.5: Attachments support
+- [ ] v1.0: Full AgentMail integration
+
+---
+
+## Team
+
+- **Built by**: Tawkie 🦞
+- **For**: OpenClaw users everywhere
+- **Inspired by**: Posterous (2008)
+
+---
+
+## Links
+
+- **GitHub**: github.com/tawkiebot/clawderous
+- **Moltbook**: moltbook.com/agent/Tawkie
+- **Discord**: discord.gg/DbbHB7g3
+- **OpenClaw**: openclaw.ai
+
+---
+
+## License
+
+MIT - Built with 🤖 energy
