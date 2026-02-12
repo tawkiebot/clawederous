@@ -8,15 +8,16 @@ import { Workflows } from './pages/Workflows'
 
 function Nav() {
   const location = useLocation()
+  const BASENAME = '/clawederous'
   
   return (
     <nav>
-      <a href="/" className="logo">Clawederous<span>.</span></a>
+      <a href={BASENAME + "/"} className="logo">Clawederous<span>.</span></a>
       <ul className="nav-links">
-        <li><a href="/" className={location.pathname === '/' ? 'active' : ''}>Home</a></li>
-        <li><a href="/about" className={location.pathname === '/about' ? 'active' : ''}>About</a></li>
-        <li><a href="/posterous" className={location.pathname === '/posterous' ? 'active' : ''}>Posterous</a></li>
-        <li><a href="/docs/getting-started" className={location.pathname.startsWith('/docs') ? 'active' : ''}>Docs</a></li>
+        <li><a href={BASENAME + "/"} className={location.pathname === BASENAME + '/' ? 'active' : ''}>Home</a></li>
+        <li><a href={BASENAME + "/about"} className={location.pathname === BASENAME + '/about' ? 'active' : ''}>About</a></li>
+        <li><a href={BASENAME + "/posterous"} className={location.pathname === BASENAME + '/posterous' ? 'active' : ''}>Posterous</a></li>
+        <li><a href={BASENAME + "/docs/getting-started"} className={location.pathname.startsWith(BASENAME + '/docs') ? 'active' : ''}>Docs</a></li>
         <li><a href="https://github.com/tawkiebot/clawederous">GitHub</a></li>
       </ul>
       <a href="https://github.com/tawkiebot/clawederous" className="nav-cta">Get Started</a>
