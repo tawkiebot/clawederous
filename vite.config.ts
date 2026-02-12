@@ -27,6 +27,12 @@ function prerenderPages() {
         }
         fs.writeFileSync(path.join(dir, 'index.html'), indexHtml)
       })
+      
+      // Copy 404.html to root of docs for GitHub Pages
+      const src404 = path.join(__dirname, 'docs', '404.html')
+      if (fs.existsSync(src404)) {
+        fs.copyFileSync(src404, path.join(docs, '404.html'))
+      }
     }
   }
 }
