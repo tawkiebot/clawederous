@@ -132,127 +132,97 @@ export default function Posterous() {
 
   return (
     <div className="page">
-      <nav className="nav">
-        <div className="nav-brand">
-          <a href="/">Clawederous</a>
-        </div>
-        <div className="nav-links">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/posterous" className="active">Posterous</a>
-          <a href="/docs/getting-started">Docs</a>
-          <a href="https://github.com/tawkiebot/clawederous" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </nav>
+      <div className="page-content">
+        <a href="/about" className="back-link">
+          <ArrowLeft size={16} />
+          Back to About
+        </a>
+        <h1>The Posterous Archive</h1>
+        <p className="subtitle" style={{color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '3rem'}}>
+          A timeline and reference guide to the service that inspired Clawederous
+        </p>
 
-      <main className="main">
-        <section className="hero small">
-          <div className="container">
-            <a href="/about" className="back-link">
-              <ArrowLeft size={16} />
-              Back to About
-            </a>
-            <h1>The Posterous Archive</h1>
-            <p className="subtitle">
-              A timeline and reference guide to the service that inspired Clawederous
-            </p>
-          </div>
-        </section>
-
-        <section className="content">
-          <div className="container">
-            <div className="intro-card">
-              <h2>What Was Posterous?</h2>
-              <p>
-                Posterous (2008-2013) was a blogging platform that let you post simply by 
-                sending an email. No login, no dashboard, no CMS—just send an email and 
-                your post was live. It was elegant, simple, and brilliant.
-              </p>
-              <p>
-                Clawederous is a spiritual successor built for the AI agent era. We believe 
-                email should be your command center, not just for blogging, but for 
-                automation, workflows, and agent orchestration.
-              </p>
-            </div>
-
-            <h2 className="section-title">Timeline</h2>
-            <div className="timeline">
-              {timeline.map((item, i) => (
-                <div key={i} className="timeline-item">
-                  <div className="timeline-marker">
-                    <item.icon size={20} />
-                  </div>
-                  <div className="timeline-content">
-                    <div className="timeline-date">
-                      <span className="year">{item.year}</span>
-                      <span className="month">{item.month}</span>
-                    </div>
-                    <h3 className="timeline-title">{item.event}</h3>
-                    <p className="timeline-desc">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="section-title">Core Features</h2>
-            <div className="features-grid">
-              {features.map((feature, i) => (
-                <div key={i} className="feature-card">
-                  <feature.icon size={28} className="feature-icon" />
-                  <h3>{feature.name}</h3>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <h2 className="section-title">From Posterous to Clawederous</h2>
-            <div className="comparison-table">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Concept</th>
-                    <th>Posterous (2008)</th>
-                    <th>Clawederous (2026)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {influences.map((row, i) => (
-                    <tr key={i}>
-                      <td><strong>{row.concept}</strong></td>
-                      <td>{row.posterous}</td>
-                      <td>{row.clawederous}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="cta-section">
-              <h2>Build Something New</h2>
-              <p>
-                Posterous taught us that the best tools disappear. They become invisible, 
-                letting you focus on the work, not the workflow.
-              </p>
-              <p>
-                Clawederous carries that torch forward—for agents, for automation, for 
-                the future of human-AI collaboration.
-              </p>
-              <a href="/docs/getting-started" className="btn btn-primary">
-                Get Started
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer className="footer">
-        <div className="container">
-          <p>Clawederous — Email as the Universal Interface</p>
-          <p className="credit">
-            Inspired by Posterous (2008-2013)
+        <div className="intro-card">
+          <h2>What Was Posterous?</h2>
+          <p>
+            Posterous (2008-2013) was a blogging platform that let you post simply by 
+            sending an email. No login, no dashboard, no CMS—just send an email and 
+            your post was live. It was elegant, simple, and brilliant.
+          </p>
+          <p>
+            Clawederous is a spiritual successor built for the AI agent era. We believe 
+            email should be your command center, not just for blogging, but for 
+            automation, workflows, and agent orchestration.
           </p>
         </div>
-      </footer>
+
+        <h2 className="section-title">Timeline</h2>
+        <div className="timeline">
+          {timeline.map((item, i) => (
+            <div key={i} className="timeline-item">
+              <div className="timeline-marker">
+                <item.icon size={16} />
+              </div>
+              <div className="timeline-content">
+                <div className="timeline-date">
+                  <span className="year">{item.year}</span>
+                  <span className="month">{item.month}</span>
+                </div>
+                <h3 className="timeline-title">{item.event}</h3>
+                <p className="timeline-desc">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="section-title">Core Features</h2>
+        <div className="features-grid">
+          {features.map((feature, i) => (
+            <div key={i} className="feature-card">
+              <feature.icon size={28} className="feature-icon" />
+              <h3>{feature.name}</h3>
+              <p>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="section-title">From Posterous to Clawederous</h2>
+        <div className="comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Posterous (2008)</th>
+                <th>Clawederous (2026)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {influences.map((row, i) => (
+                <tr key={i}>
+                  <td><strong>{row.concept}</strong></td>
+                  <td>{row.posterous}</td>
+                  <td>{row.clawederous}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="cta-section">
+          <h2>Build Something New</h2>
+          <p>
+            Posterous taught us that the best tools disappear. They become invisible, 
+            letting you focus on the work, not the workflow.
+          </p>
+          <p>
+            Clawederous carries that torch forward—for agents, for automation, for 
+            the future of human-AI collaboration.
+          </p>
+          <a href="/docs/getting-started" className="btn btn-primary">
+            Get Started
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

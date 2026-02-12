@@ -375,3 +375,220 @@ footer a {
     padding: 4rem 1.5rem;
   }
 }
+
+/* Posterous Page Styles */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.intro-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem;
+  margin-bottom: 4rem;
+}
+
+.intro-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.intro-card p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.intro-card p:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin: 4rem 0;
+  padding-left: 3rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--border));
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 3rem;
+  padding-left: 2rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -3rem;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  z-index: 1;
+}
+
+.timeline-date {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date .year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(196,160,82,0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+
+.timeline-date .month {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.timeline-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Features Grid (reused) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Comparison Table */
+.comparison-table {
+  overflow-x: auto;
+  margin: 3rem 0;
+}
+
+.comparison-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.comparison-table th {
+  background: var(--bg-tertiary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.comparison-table td:first-child {
+  font-weight: 500;
+}
+
+.comparison-table td:not(:first-child) {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table tr:hover td {
+  background: rgba(196,160,82,0.02);
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  margin-top: 4rem;
+}
+
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  color: var(--text-secondary);
+}
+
+.cta-section .btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: var(--accent);
+  color: var(--bg-primary);
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-section .btn:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}

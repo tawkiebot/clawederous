@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { Home } from './pages/Home'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
 import { About } from './pages/About'
 import Posterous from './pages/Posterous'
 import { GettingStarted } from './pages/GettingStarted'
@@ -11,12 +11,12 @@ function Nav() {
   
   return (
     <nav>
-      <Link to="/" className="logo">Clawederous<span>.</span></Link>
+      <a href="/" className="logo">Clawederous<span>.</span></a>
       <ul className="nav-links">
-        <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-        <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About</Link></li>
-        <li><Link to="/posterous" className={location.pathname === '/posterous' ? 'active' : ''}>Posterous</Link></li>
-        <li><Link to="/docs/getting-started" className={location.pathname.startsWith('/docs') ? 'active' : ''}>Docs</Link></li>
+        <li><a href="/" className={location.pathname === '/' ? 'active' : ''}>Home</a></li>
+        <li><a href="/about" className={location.pathname === '/about' ? 'active' : ''}>About</a></li>
+        <li><a href="/posterous" className={location.pathname === '/posterous' ? 'active' : ''}>Posterous</a></li>
+        <li><a href="/docs/getting-started" className={location.pathname.startsWith('/docs') ? 'active' : ''}>Docs</a></li>
         <li><a href="https://github.com/tawkiebot/clawederous">GitHub</a></li>
       </ul>
       <a href="https://github.com/tawkiebot/clawederous" className="nav-cta">Get Started</a>
@@ -34,7 +34,7 @@ function Footer() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/clawederous">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
