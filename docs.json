@@ -1,0 +1,29 @@
+{
+  "project": "clawederous",
+  "version": "0.0.0",
+  "generatedAt": "2026-02-12T23:38:25.725Z",
+  "sections": [
+    {
+      "id": "overview",
+      "title": "Overview",
+      "description": "Email as the Universal Interface - A homage to Posterous (2008)",
+      "content": "# Clawederous\n\n**Email as the Universal Interface**\n\nA homage to Posterous (2008). Send an email, get things done. No apps, no logins, no friction. Your inbox is your terminal.\n\n## What is Clawederous?\n\nClawederous is an email-powered automation platform that lets you accomplish tasks by simply sending emails. It's built for the AI agent era, where your inbox becomes your command center.\n\n## Core Philosophy\n\n- **Protocol Over Platform** - Email is the one protocol that works everywhere. No accounts, no lock-in.\n- **Agents Should Have Identities** - AI agents need their own inboxes and presence.\n- **Own Your Infrastructure** - No vendor lock-in. Your data, your rules.\n- **Simplicity Is Power** - The best tools disappear. You focus on the work, not the workflow.\n\n## Available Commands\n\n| Command | Purpose |\n|---------|---------|\n| `/ping` | Health check |\n| `/tweet` | Post to X/Twitter |\n| `/note` | Save to knowledge base |\n| `/claris` | Forward to recipient |\n| `/log` | Daily journal entry |\n| `/remind` | Create reminder |\n| `/summarize` | AI summary |\n\n## Project Structure\n\n```\nclawederous/\n├── src/\n│   ├── commands/     # Command handlers\n│   ├── workflows/    # Workflow definitions\n│   ├── parsers/      # Email command parsers\n│   ├── pages/        # React UI pages\n│   └── App.tsx       # Main app with routing\n├── docs/             # Documentation\n└── .env             # Environment configuration\n```\n\n## Quick Links\n\n- [Quickstart](./quickstart.md) - Get started in 5 minutes"
+    },
+    {
+      "id": "quickstart",
+      "title": "Quickstart",
+      "description": "Get started with Clawederous in 5 minutes",
+      "content": "# Quickstart\n\nGet up and running with **Clawederous** in under 5 minutes.\n\n## Prerequisites\n\n- Node.js 18+\n- An AgentMail inbox (or any IMAP provider)\n- Git\n\n## Installation\n\n### 1. Clone the Repository\n\n```bash\ngit clone https://github.com/tawkiebot/clawederous\ncd clawederous\n```\n\n### 2. Install Dependencies\n\n```bash\nnpm install\n```\n\n### 3. Configure Environment\n\nCopy the example environment file and add your credentials:\n\n```bash\ncp .env.example .env\n```\n\nEdit `.env` with your configuration:\n\n```bash\n# Required\nAGENTMAIL_API_KEY=your_api_key\nAGENTMAIL_INBOX=you@agentmail.to\n\n# Optional\nTWITTER_API_KEY=your_twitter_key\nDATA_DIR=./data\n```\n\n### 4. Start the Agent\n\n```bash\nnpm run dev\n```\n\nYour agent is now running and listening for emails!\n\n## Usage\n\nSend an email to your AgentMail inbox with commands:\n\n| Email Subject | Action |\n|--------------|--------|\n| `/note Ideas for the project` | Saves to knowledge base |\n| `/log Today's progress` | Journal entry |\n| `/remind tomorrow 9am Meeting` | Creates reminder |\n| `/tweet Just shipped!` | Posts to X/Twitter |\n\n## Next Steps\n\n- Read the [Overview](./overview.md) for architecture details\n- Explore command handlers in `src/commands/`\n- Add your own commands to `src/commands/`"
+    },
+    {
+      "id": "architecture",
+      "title": "Architecture",
+      "content": "# Architecture\n\n## Project Structure\n\n```\nclawederous/\n├── src/\n│   ├── commands/     # Email command handlers\n│   │   ├── BaseCommand.ts\n│   │   ├── index.ts\n│   │   ├── PingCommand.ts\n│   │   ├── NoteCommand.ts\n│   │   └── ...\n│   ├── workflows/    # Workflow definitions\n│   ├── parsers/       # Email parsing logic\n│   ├── pages/        # React UI pages\n│   │   ├── Home.tsx\n│   │   ├── About.tsx\n│   │   └── ...\n│   ├── App.tsx       # Main app with routing\n│   └── main.tsx      # Entry point\n├── docs/             # Documentation\n├── .env              # Environment (not committed)\n└── package.json\n```\n\n## Command Flow\n\n1. Email arrives at AgentMail inbox\n2. Clawederous polls and receives email\n3. Parser extracts command and arguments\n4. Command handler processes request\n5. Result sent back via email reply\n\n## Adding Commands\n\nSee `docs/prompts/add-command.md` for step-by-step guide."
+    },
+    {
+      "id": "skill",
+      "title": "Skill",
+      "content": "# Clawederous Skills\n\nSkills are pre-built task templates for common operations.\n\n## Built-in Skills\n\n### Command Development\nUse `docs/prompts/add-command.md` to add new commands to Clawederous.\n\n### Workflow Creation\nCreate new workflows in `src/workflows/` following the pattern in existing workflows.\n\n### Testing\nRun tests with: `npm test`\n\n## Skill Pattern\n\nEach skill should include:\n1. Context - What the task accomplishes\n2. Prerequisites - What must exist first\n3. Steps - Numbered steps for the agent\n4. Validation - How to verify success"
+    }
+  ]
+}
