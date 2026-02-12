@@ -10,8 +10,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
     <script type="text/javascript">
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
+        var search = l.search;
+        
+        // Handle ?p=/path format (from 404.html redirect)
+        if (search.indexOf('?p=') === 0) {
+          var path = decodeURIComponent(search.slice(3)); // Remove ?p=
+          // Remove trailing slash if present
+          if (path.endsWith('/') && path.length > 1) {
+            path = path.slice(0, -1);
+          }
+          window.history.replaceState(null, null, path);
+        }
+        // Handle ?/path format (original)
+        else if (search[1] === '/') {
+          var decoded = search.slice(1).split('&').map(function(s) {
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
