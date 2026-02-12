@@ -9,9 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
     <script type="text/javascript">
+      // Handle GitHub Pages SPA routing
       (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) {
+        var search = l.search;
+        // Check for ?p=/path pattern (from 404.html redirect)
+        if (search.indexOf('?p=') === 0) {
+          var path = search.slice(3); // Remove ?p=
+          // Decode and remove any trailing slash if it causes issues
+          path = decodeURIComponent(path);
+          // Replace the URL without triggering a redirect loop
+          window.history.replaceState(null, null, path);
+        } else if (search[1] === '/') {
+          // Original handler for other query params
+          var decoded = search.slice(1).split('&').map(function(s) {
             return s.replace(/~and~/g, '&')
           }).join('?');
           window.history.replaceState(null, null,
