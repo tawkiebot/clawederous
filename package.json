@@ -19,6 +19,7 @@
   "author": "Tawkie",
   "license": "MIT",
   "dependencies": {
+    "agentmail": "^0.2.12",
     "imap": "^0.8.19",
     "typescript": "^5.0.0"
   },
