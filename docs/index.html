@@ -6,7 +6,8 @@
   <title>Clawederous — Email as the Universal Interface</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
   <style>
     * {
       margin: 0;
@@ -33,7 +34,7 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.6;
@@ -141,8 +142,13 @@
       animation: fadeInUp 0.8s ease;
     }
 
-    .hero-badge span {
+    .hero-badge a {
       color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero-badge a:hover {
+      text-decoration: underline;
     }
 
     .hero h1 {
@@ -274,9 +280,9 @@
 
     .code-content {
       padding: 2rem;
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.9rem;
-      line-height: 1.8;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.9;
     }
 
     .code-content .to { color: #ff7b72; }
@@ -320,8 +326,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
       margin-bottom: 1.5rem;
+      color: var(--bg-primary);
     }
 
     .feature-card h3 {
@@ -365,7 +371,7 @@
     }
 
     .command-slash {
-      font-family: 'SF Mono', monospace;
+      font-family: 'JetBrains Mono', monospace;
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--accent);
@@ -475,7 +481,7 @@
 
   <section class="hero">
     <div class="hero-badge">
-      ✨ A homage to <a href="about.html" style="color: inherit; text-decoration: none;"><span>Posterous</span></a> (2008)
+      <i data-lucide="heart" style="width:14px;height:14px;"></i> A homage to <a href="about.html">Posterous</a> (2008)
     </div>
     <h1>Email as the<br><span>Universal Interface</span></h1>
     <p class="hero-description">
@@ -486,7 +492,9 @@
       <a href="https://github.com/tawkiebot/clawederous" class="btn-primary">Start Building</a>
       <a href="#how-it-works" class="btn-secondary">Learn More</a>
     </div>
-    <div class="hero-scroll">Scroll to explore</div>
+    <div class="hero-scroll">
+      <i data-lucide="arrow-down" style="width:16px;height:16px;"></i>
+    </div>
   </section>
 
   <section class="code-section" id="how-it-works">
@@ -518,32 +526,44 @@
     </div>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🌐</div>
+        <div class="feature-icon">
+          <i data-lucide="globe" style="width:24px;height:24px;"></i>
+        </div>
         <h3>Universal Access</h3>
         <p>Everyone has email. No new accounts, no lock-in. Works on any device, any client.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🤖</div>
+        <div class="feature-icon">
+          <i data-lucide="cpu" style="width:24px;height:24px;"></i>
+        </div>
         <h3>Agent-Ready</h3>
         <p>Perfect interface for AI to parse and act on. Structured commands, natural language.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔒</div>
+        <div class="feature-icon">
+          <i data-lucide="lock" style="width:24px;height:24px;"></i>
+        </div>
         <h3>No Lock-In</h3>
         <p>Your data, your inbox, your rules. Portable, open, and under your control.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
+        <div class="feature-icon">
+          <i data-lucide="zap" style="width:24px;height:24px;"></i>
+        </div>
         <h3>Instant Setup</h3>
         <p>AgentMail inbox in seconds. Configure once, use everywhere. Zero friction.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🔄</div>
+        <div class="feature-icon">
+          <i data-lucide="message-circle" style="width:24px;height:24px;"></i>
+        </div>
         <h3>Two-Way Flow</h3>
         <p>Read, understand, reply. Unlike notifications, email is truly conversational.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎯</div>
+        <div class="feature-icon">
+          <i data-lucide="terminal" style="width:24px;height:24px;"></i>
+        </div>
         <h3>Command Bus</h3>
         <p>Short syntax → structured actions. Your inbox becomes an automation hub.</p>
       </div>
@@ -599,7 +619,11 @@
     </a>
   </footer>
 
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
     // Smooth scroll for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
