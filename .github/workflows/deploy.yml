@@ -46,6 +46,19 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Get deploy message from commit
+        id: message
+        run: |
+          # Extract message from commit, or use default
+          MSG="${{ github.event.head_commit.message }}"
+          if [[ "$MSG" == *"[deploy:"*"]"* ]]; then
+            # Extract text between [deploy: and ]
+            DEPLOY_MSG=$(echo "$MSG" | sed -n 's/.*\[deploy:\(.*\)\].*/\1/p')
+            echo "deploy-message=$DEPLOY_MSG" >> $GITHUB_OUTPUT
+          else
+            echo "deploy-message=Deployed to GitHub Pages" >> $GITHUB_OUTPUT
+          fi
+
       - name: Telegram Notification
         if: success()
         uses: appleboy/telegram-action@v0.3.0
@@ -53,14 +66,11 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            🦞 **Clawederous Deployed!**
+            🦞 **Clawederous Update**
             
-            ✅ Successfully deployed to GitHub Pages
+            ${{ steps.message.outputs.deploy-message }}
             
             🔗 https://tawkiebot.github.io/clawederous/
-            
-            📝 Commit: `${{ github.sha.substring(0, 7) }}`
-            👤 Author: ${{ github.actor }}
 
       - name: Telegram Failure Notification
         if: failure()
@@ -69,11 +79,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            🦞 **Clawederous Deploy Failed**
+            🦞 **Deploy Failed**
             
-            ❌ Deployment failed
-            
-            📝 Commit: `${{ github.sha.substring(0, 7) }}`
-            👤 Author: ${{ github.actor }}
+            ❌ ${{ github.event.head_commit.message }}
             
             Check the workflow for details.
