@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clawederous — Email as the Universal Interface</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
+    <script type="text/javascript">
+      (function(l) {
+        var search = l.search;
+        
+        // Handle ?p=/path format (from 404.html redirect)
+        if (search.indexOf('?p=') === 0) {
+          var path = decodeURIComponent(search.slice(3)); // Remove ?p=
+          // Remove trailing slash if present
+          if (path.endsWith('/') && path.length > 1) {
+            path = path.slice(0, -1);
+          }
+          window.history.replaceState(null, null, path);
+        }
+        // Handle ?/path format (original)
+        else if (search[1] === '/') {
+          var decoded = search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <script type="module" crossorigin src="/clawederous/assets/index-BL2d77NL.js"></script>
+    <link rel="stylesheet" crossorigin href="/clawederous/assets/index-CMNzpWMy.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

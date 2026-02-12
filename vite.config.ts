@@ -8,8 +8,8 @@ function prerenderPages() {
   return {
     name: 'prerender-pages',
     closeBundle() {
-      const dist = path.resolve(__dirname, 'dist')
-      const indexHtml = fs.readFileSync(path.join(dist, 'index.html'), 'utf-8')
+      const docs = path.resolve(__dirname, 'docs')
+      const indexHtml = fs.readFileSync(path.join(docs, 'index.html'), 'utf-8')
       
       const routes = [
         'about',
@@ -21,7 +21,7 @@ function prerenderPages() {
       ]
       
       routes.forEach(route => {
-        const dir = path.join(dist, route)
+        const dir = path.join(docs, route)
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true })
         }
@@ -35,6 +35,6 @@ export default defineConfig({
   plugins: [react(), prerenderPages()],
   base: '/clawederous/',
   build: {
-    outDir: 'dist'
+    outDir: 'docs'
   }
 })
