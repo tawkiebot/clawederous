@@ -28,12 +28,12 @@ export default {
       { pattern: 'deploy', instruction: 'Push to gh-pages branch, see .github/workflows/' },
     ],
 
-    sections: ['overview', 'quickstart', 'commands', 'architecture', 'api', 'workflows'],
+    sections: ['overview', 'quickstart', 'commands', 'architecture', 'api', 'workflows', 'prompts', 'skill'],
   },
 
   docs: {
     path: './landing/docs',
     output: './',
-    required: ['overview', 'getting-started'],
+    required: ['overview', 'getting-started', 'prompts', 'skill'],
   },
 }

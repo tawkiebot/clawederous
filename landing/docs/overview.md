@@ -1,3 +1,9 @@
+---
+title: Clawderous Overview
+description: Email-to-anything for OpenClaw. Send commands via email to trigger actions.
+order: 1
+---
+
 # Clawderous Overview
 
 **Email as the Universal Interface for OpenClaw**

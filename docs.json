@@ -1,12 +1,25 @@
 {
   "project": "clawderous",
   "version": "0.0.0",
-  "generatedAt": "2026-02-16T18:47:27.444Z",
+  "generatedAt": "2026-02-16T18:54:37.375Z",
   "sections": [
     {
       "id": "overview",
-      "title": "Overview",
+      "title": "Clawderous Overview",
+      "description": "Email-to-anything for OpenClaw. Send commands via email to trigger actions.",
       "content": "# Clawderous Overview\n\n**Email as the Universal Interface for OpenClaw**\n\n---\n\n## What is Clawderous?\n\nClawderous brings the Posterous magic to the agent era. Instead of just blogging by email, you can do *anything* by emailing your agent.\n\n> \"Posterous let you blog by emailing. Clawderous lets you do *anything* by emailing your agent.\"\n\n### Key Features\n\n| Feature | Description |\n|---------|-------------|\n| **📝 /memo** | Quick notes stored in Convex |\n| **✍️ /blog** | Publish blog posts with markdown |\n| **⚡ /run** | Trigger OpenClaw workflows |\n| **↩️ /reply** | Send email replies |\n| **🔍 /status** | View your Clawderous stats |\n\n---\n\n## How It Works\n\n```\nUser Email ──▶ Clawderous Engine ──▶ Output\n                 │\n     ┌──────────┼──────────┐\n     ▼          ▼          ▼\n   /memo      /blog      /run\n     │          │          │\n     ▼          ▼          ▼\n  Convex     Storage    Workflows\n```\n\n1. **You send an email** to `clawederous@agentmail.to`\n2. **Clawderous parses** the subject line for commands\n3. **Handlers execute** each command (memo, blog, run, etc.)\n4. **Results are stored** in Convex or triggered as workflows\n\n---\n\n## Why Email?\n\n- **Universal** — Everyone has email\n- **Familiar** — No new tools to learn  \n- **Asynchronous** — Works offline, anytime\n- **Portable** — Your agent, accessible anywhere\n\n---\n\n## Quick Example\n\n```\nTo: clawederous@agentmail.to\nSubject: /memo Shopping List\nBody: \n- Milk\n- Eggs\n- Coffee beans\n```\n\n**Response:**\n```\n✅ Memo saved!\n📝 Shopping List\n🔗 https://tawkie.dev/memo/abc123\n```\n\n---\n\n## Project Structure\n\n```\nclawderous/\n├── src/                 # React frontend website\n│   ├── pages/          # Home, About, Getting Started, API\n│   ├── App.tsx         # Main app component\n│   └── main.tsx        # Entry point\n├── landing/            # Backend email engine\n│   ├── index.ts        # Main entry\n│   ├── ingest/         # Email parsing (agentmail.ts, email.ts)\n│   ├── parse/          # Command parser (command.ts)\n│   ├── handlers/       # Command handlers (commands.ts)\n│   ├── functions/      # Convex functions\n│   └── docs/           # This documentation\n├── dist/               # Built frontend (deployed to GitHub Pages)\n└── package.json\n```\n\n---\n\n## Links\n\n- **Live Site**: [tawkiebot.github.io/clawderous](https://tawkiebot.github.io/clawderous)\n- **GitHub**: [github.com/tawkiebot/clawderous](https://github.com/tawkiebot/clawderous)\n- **Discord**: [discord.gg/DbbHB7g3](https://discord.gg/DbbHB7g3)\n\n---\n\n*Built by Tawkie 🦞 for OpenClaw*"
+    },
+    {
+      "id": "prompts",
+      "title": "Task Templates",
+      "description": "Common task templates for Clawderous",
+      "content": "# Task Templates\n\n## Deploy\n```\nSteps to deploy Clawderous:\n1. npm run build:frontend\n2. cp dist/index.html dist/404.html\n3. cd dist && git add . && git commit -m \"Deploy\" && git push -f\n```\n\n## Add Command\n```\nTo add /remind:\n1. Edit landing/parse/command.ts - add RemindSchema\n2. Edit landing/handlers/commands.ts - add RemindHandler\n3. Test by emailing clawederous@agentmail.to\n```\n\n## Test Local\n```\nnpm run dev\n```"
+    },
+    {
+      "id": "skill",
+      "title": "Clawderous Skill",
+      "description": "ClawHub skill definition for Clawderous",
+      "content": "# Skill: Clawderous\n\n## What\nEmail-to-anything for OpenClaw. Send commands via email.\n\n## Commands\n- /memo - Save note\n- /blog - Publish post\n- /run - Trigger workflow\n- /reply - Send reply\n- /status - View stats\n- /help - Get help\n\n## Install\n```bash\nclawhub install clawderous\n```\n\n## Config\nAGENTMAIL_API_KEY required\n\n## Deploy\nPush built files to gh-pages branch"
     },
     {
       "id": "commands",

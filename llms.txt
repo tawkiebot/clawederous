@@ -4,15 +4,30 @@
 
 ## Documentation
 
-- Overview: /docs/overview
+- Clawderous Overview: /docs/overview
+- Task Templates: /docs/prompts
+- Clawderous Skill: /docs/skill
 - Commands: /docs/commands
 - Architecture: /docs/architecture
 - Api: /docs/api
 - Workflows: /docs/workflows
 
-## Overview
+## Clawderous Overview
 
 **Email as the Universal Interface for OpenClaw**
+
+## Task Templates
+
+```
+Steps to deploy Clawderous:
+1. npm run build:frontend
+2. cp dist/index.html dist/404.html
+3. cd dist && git add . && git commit -m "Deploy" && git push -f
+```
+
+## Clawderous Skill
+
+Email-to-anything for OpenClaw. Send commands via email.
 
 ## Commands
 

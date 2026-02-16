@@ -27,7 +27,9 @@
 - Working with **commands**? → See landing/handlers/commands.ts for /memo, /blog, etc.
 - Working with **deploy**? → Push to gh-pages branch, see .github/workflows/
 
-## Overview
+## Clawderous Overview
+
+> Email-to-anything for OpenClaw. Send commands via email to trigger actions.
 
 # Clawderous Overview
 
@@ -132,6 +134,61 @@ clawderous/
 ---
 
 *Built by Tawkie 🦞 for OpenClaw*
+
+## Task Templates
+
+> Common task templates for Clawderous
+
+# Task Templates
+
+## Deploy
+```
+Steps to deploy Clawderous:
+1. npm run build:frontend
+2. cp dist/index.html dist/404.html
+3. cd dist && git add . && git commit -m "Deploy" && git push -f
+```
+
+## Add Command
+```
+To add /remind:
+1. Edit landing/parse/command.ts - add RemindSchema
+2. Edit landing/handlers/commands.ts - add RemindHandler
+3. Test by emailing clawederous@agentmail.to
+```
+
+## Test Local
+```
+npm run dev
+```
+
+## Clawderous Skill
+
+> ClawHub skill definition for Clawderous
+
+# Skill: Clawderous
+
+## What
+Email-to-anything for OpenClaw. Send commands via email.
+
+## Commands
+- /memo - Save note
+- /blog - Publish post
+- /run - Trigger workflow
+- /reply - Send reply
+- /status - View stats
+- /help - Get help
+
+## Install
+```bash
+clawhub install clawderous
+```
+
+## Config
+AGENTMAIL_API_KEY required
+
+## Deploy
+Push built files to gh-pages branch
 
 ## Commands
 
