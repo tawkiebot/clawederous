@@ -96,26 +96,46 @@ export function parseEmailToCommand(
 }
 
 function parseMemo(title: string, body: string): { command: Command | null; error?: string } {
-  // First line might be title
-  const lines = body.split("\n");
+  // If title provided in subject, use full body as content
+  if (title) {
+    if (!body) {
+      return { command: null, error: "Memo content is empty" };
+    }
+    return {
+      command: {
+        command: "/memo" as const,
+        title,
+        content: body,
+      },
+    };
+  }
+  
+  // No title in subject - try first line of body as title
+  const lines = body.split("\n").filter(l => l.trim());
+  
+  if (lines.length === 0) {
+    return { command: null, error: "Memo content is empty" };
+  }
+  
   const firstLine = lines[0].trim();
   
   // If first line looks like a title (short, no punctuation), use it
-  const actualTitle = title || (firstLine.length < 80 && !firstLine.endsWith(".")) 
-    ? firstLine 
-    : undefined;
-  
-  const actualContent = actualTitle ? lines.slice(1).join("\n").trim() : body;
-
-  if (!actualContent) {
-    return { command: null, error: "Memo content is empty" };
+  if (firstLine.length < 80 && !firstLine.endsWith(".")) {
+    const remaining = lines.slice(1).join("\n").trim();
+    return {
+      command: {
+        command: "/memo" as const,
+        title: firstLine,
+        content: remaining,
+      },
+    };
   }
-
+  
+  // Otherwise, whole body is content (no title)
   return {
     command: {
       command: "/memo" as const,
-      title: actualTitle,
-      content: actualContent,
+      content: body,
     },
   };
 }

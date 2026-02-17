@@ -169,7 +169,7 @@ export function getHandler(command: Command): CommandHandler {
       return new StatusHandler();
     case "/help":
       return new HelpHandler();
-  default:
-    throw new Error(`Unknown command: ${(command as Command).command}`);
+    default:
+      throw new Error(`Unknown command: ${(command as Command).command}`);
   }
 }
