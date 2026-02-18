@@ -30,10 +30,15 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build:frontend
+        run: |
+          rm -rf ./dist
+          npm run build:frontend
 
       - name: Copy index.html to 404.html for SPA routing
-        run: cp ./dist/index.html ./dist/404.html
+        run: |
+          ls -la ./dist/
+          cp ./dist/index.html ./dist/404.html
+          ls -la ./dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
