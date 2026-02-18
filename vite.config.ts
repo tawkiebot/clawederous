@@ -14,7 +14,7 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
   },
-  base: '/clawderous/',
+  base: '/',
   server: {
     port: 5173,
   },
